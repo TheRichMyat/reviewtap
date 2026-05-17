@@ -9,6 +9,7 @@ import QRCode from 'react-native-qrcode-svg';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 import * as MediaLibrary from 'expo-media-library';
 import * as Sharing from 'expo-sharing';
+import * as FileSystem from 'expo-file-system/legacy';
 import { useFonts, ArchivoBlack_400Regular } from '@expo-google-fonts/archivo-black';
 import { Ionicons } from '@expo/vector-icons';
 import { doc, getDoc } from 'firebase/firestore';
@@ -48,11 +49,22 @@ export default function QRScreen({ navigation }) {
   }
 
   async function capturePoster() {
-    return await captureRef(posterRef, {
+    const tmpUri = await captureRef(posterRef, {
       format: 'png',
       quality: 1,
       result: 'tmpfile',
     });
+    // Copy to a stable cache path with a clean filename so destination apps
+    // (WhatsApp, Messages, Gmail, etc.) accept it without rejection.
+    const safeName = (business?.businessName || 'reviewtap')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 40);
+    const target = `${FileSystem.cacheDirectory}reviewtap-${safeName}-qr.png`;
+    try { await FileSystem.deleteAsync(target, { idempotent: true }); } catch {}
+    await FileSystem.copyAsync({ from: tmpUri, to: target });
+    return target;
   }
 
   async function downloadQr() {
@@ -94,6 +106,7 @@ export default function QRScreen({ navigation }) {
       await Sharing.shareAsync(uri, {
         mimeType: 'image/png',
         dialogTitle: 'Scan to leave us a review!',
+        UTI: 'public.png',
       });
     } catch (err) {
       Alert.alert('Could not share', err.message);
