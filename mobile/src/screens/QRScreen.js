@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  View, Text, StyleSheet, Alert, Pressable, ActivityIndicator,
+  View, Text, StyleSheet, Alert, Pressable, ActivityIndicator, Switch, ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,16 +9,20 @@ import QRCode from 'react-native-qrcode-svg';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 import * as MediaLibrary from 'expo-media-library';
 import * as Sharing from 'expo-sharing';
+import { useFonts, ArchivoBlack_400Regular } from '@expo-google-fonts/archivo-black';
 import { Ionicons } from '@expo/vector-icons';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db, LANDING_BASE_URL } from '../firebase';
 import { gradient, colors, shadow } from '../theme';
+import GradientText from '../components/GradientText';
 
 export default function QRScreen({ navigation }) {
   const [business, setBusiness] = useState(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
-  const viewShotRef = useRef();
+  const [includeWatermark, setIncludeWatermark] = useState(true);
+  const [fontsLoaded] = useFonts({ ArchivoBlack_400Regular });
+  const posterRef = useRef();
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', loadBusiness);
@@ -43,8 +47,8 @@ export default function QRScreen({ navigation }) {
     }
   }
 
-  async function captureQr() {
-    return await captureRef(viewShotRef, {
+  async function capturePoster() {
+    return await captureRef(posterRef, {
       format: 'png',
       quality: 1,
       result: 'tmpfile',
@@ -52,7 +56,7 @@ export default function QRScreen({ navigation }) {
   }
 
   async function downloadQr() {
-    if (busy) return;
+    if (busy || !fontsLoaded) return;
     setBusy(true);
     try {
       const perm = await MediaLibrary.requestPermissionsAsync(true);
@@ -64,29 +68,29 @@ export default function QRScreen({ navigation }) {
         return;
       }
       if (perm.status !== 'granted') {
-        Alert.alert('Permission required', 'Allow Photos access to save the QR code.');
+        Alert.alert('Permission required', 'Allow Photos access to save your QR.');
         return;
       }
-      const uri = await captureQr();
+      const uri = await capturePoster();
       await MediaLibrary.createAssetAsync(uri);
-      Alert.alert('Saved', 'QR code saved to your Photos.');
+      Alert.alert('Saved', 'Your QR poster was saved to Photos.');
     } catch (err) {
       console.warn('[QR download]', err);
-      Alert.alert('Could not save', err?.message || 'Unknown error. Try the Share button instead.');
+      Alert.alert('Could not save', err?.message || 'Try the Share button instead.');
     } finally {
       setBusy(false);
     }
   }
 
   async function shareQr() {
-    if (busy) return;
+    if (busy || !fontsLoaded) return;
     setBusy(true);
     try {
       if (!(await Sharing.isAvailableAsync())) {
         Alert.alert('Not available', 'Sharing is not available on this device.');
         return;
       }
-      const uri = await captureQr();
+      const uri = await capturePoster();
       await Sharing.shareAsync(uri, {
         mimeType: 'image/png',
         dialogTitle: 'Scan to leave us a review!',
@@ -101,7 +105,7 @@ export default function QRScreen({ navigation }) {
   if (loading) {
     return (
       <SafeAreaView style={styles.center}>
-        <ActivityIndicator color={colors.white} />
+        <ActivityIndicator color={colors.gradientStart} />
       </SafeAreaView>
     );
   }
@@ -118,72 +122,201 @@ export default function QRScreen({ navigation }) {
   }
 
   const qrUrl = `${LANDING_BASE_URL}/review/${business.id}`;
+  const actionsDisabled = busy || !fontsLoaded;
 
   return (
-    <LinearGradient colors={gradient} style={styles.gradient}>
-      <StatusBar style="light" translucent backgroundColor="transparent" />
-      <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-        <View style={styles.topRow}>
-          <Text style={styles.title}>Your QR Code</Text>
-        </View>
+    <SafeAreaView style={styles.screen} edges={['top', 'left', 'right']}>
+      <StatusBar style="dark" translucent backgroundColor="transparent" />
+      <ScrollView contentContainerStyle={styles.scroll}>
+        <Text style={styles.screenTitle}>Your QR Code</Text>
+        <Text style={styles.screenSub}>This is what your customers will scan.</Text>
 
-        <View style={styles.content}>
-          <ViewShot ref={viewShotRef} options={{ format: 'png', quality: 1 }}>
-            <View style={[styles.card, shadow]}>
-              <QRCode value={qrUrl} size={240} />
+        {/* Print-ready poster — this is exactly what gets saved/shared */}
+        <ViewShot
+          ref={posterRef}
+          options={{ format: 'png', quality: 1 }}
+          style={styles.posterWrapper}
+        >
+          <View style={styles.poster}>
+            <LinearGradient
+              colors={gradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.strip}
+            >
+              <Text
+                style={[
+                  styles.stripWordmark,
+                  fontsLoaded && { fontFamily: 'ArchivoBlack_400Regular' },
+                ]}
+              >
+                RT.
+              </Text>
+            </LinearGradient>
+
+            <View style={styles.posterBody}>
+              <Text style={styles.intro}>Scan to leave a review at</Text>
+              <Text style={styles.bizName} numberOfLines={2}>{business.businessName}</Text>
+
+              <View style={styles.qrFrame}>
+                <QRCode value={qrUrl} size={220} backgroundColor="#FFFFFF" color="#000000" />
+              </View>
+
+              {includeWatermark && fontsLoaded && (
+                <View style={styles.watermark}>
+                  <GradientText style={styles.watermarkText}>
+                    Powered by @reviewtap on Play Store
+                  </GradientText>
+                </View>
+              )}
             </View>
-          </ViewShot>
-
-          <Text style={styles.business}>{business.businessName}</Text>
-          <Text style={styles.tagline}>Scan to leave a review</Text>
-
-          <View style={styles.actions}>
-            <Pressable onPress={downloadQr} style={[styles.action, shadow]} disabled={busy}>
-              <Ionicons name="download-outline" size={20} color={colors.text} />
-              <Text style={styles.actionText}>{busy ? 'Working…' : 'Download to Photos'}</Text>
-            </Pressable>
-            <Pressable onPress={shareQr} style={[styles.action, shadow]} disabled={busy}>
-              <Ionicons name="share-outline" size={20} color={colors.text} />
-              <Text style={styles.actionText}>{busy ? 'Working…' : 'Share QR Code'}</Text>
-            </Pressable>
           </View>
+        </ViewShot>
+
+        {/* Watermark toggle */}
+        <View style={styles.toggleCard}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.toggleLabel}>ReviewTap watermark</Text>
+            <Text style={styles.toggleSub}>Premium · Free during beta</Text>
+          </View>
+          <Switch
+            value={includeWatermark}
+            onValueChange={setIncludeWatermark}
+            trackColor={{ false: '#E5E7EB', true: colors.gradientStart }}
+            thumbColor="#FFFFFF"
+          />
         </View>
-      </SafeAreaView>
-    </LinearGradient>
+
+        {/* Actions */}
+        <View style={styles.actions}>
+          <Pressable
+            onPress={downloadQr}
+            style={[styles.action, shadow, actionsDisabled && styles.actionDisabled]}
+            disabled={actionsDisabled}
+          >
+            <Ionicons name="download-outline" size={20} color={colors.text} />
+            <Text style={styles.actionText}>{busy ? 'Working…' : 'Download to Photos'}</Text>
+          </Pressable>
+          <Pressable
+            onPress={shareQr}
+            style={[styles.action, shadow, actionsDisabled && styles.actionDisabled]}
+            disabled={actionsDisabled}
+          >
+            <Ionicons name="share-outline" size={20} color={colors.text} />
+            <Text style={styles.actionText}>{busy ? 'Working…' : 'Share QR Code'}</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  gradient: { flex: 1 },
-  container: { flex: 1 },
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.gradientStart },
-  topRow: {
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 8,
+  screen: { flex: 1, backgroundColor: colors.bg },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
+  scroll: { padding: 20, paddingBottom: 32, alignItems: 'center' },
+
+  screenTitle: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: colors.text,
+    letterSpacing: -0.3,
+    alignSelf: 'flex-start',
   },
-  title: { color: colors.white, fontSize: 18, fontWeight: '700', letterSpacing: 0.2 },
-  content: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
-  card: {
-    backgroundColor: colors.white,
-    padding: 24,
-    borderRadius: 20,
+  screenSub: {
+    fontSize: 13,
+    color: colors.muted,
+    marginTop: 4,
+    marginBottom: 20,
+    alignSelf: 'flex-start',
+  },
+
+  // Poster (the capturable card)
+  posterWrapper: { borderRadius: 16, overflow: 'hidden', ...shadow },
+  poster: {
+    width: 320,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    overflow: 'hidden',
+  },
+  strip: {
+    height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingHorizontal: 20,
+  },
+  stripWordmark: {
+    color: '#FFFFFF',
+    fontSize: 24,
+    fontWeight: '900',
+    letterSpacing: 0.5,
+  },
+  posterBody: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  intro: {
+    fontSize: 13,
+    color: colors.muted,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginBottom: 8,
+  },
+  bizName: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: colors.text,
+    textAlign: 'center',
+    letterSpacing: -0.4,
     marginBottom: 20,
   },
-  business: { color: colors.white, fontSize: 24, fontWeight: '800', letterSpacing: -0.4 },
-  tagline: { color: 'rgba(255,255,255,0.85)', fontSize: 14, marginTop: 4, marginBottom: 28 },
-  actions: { width: '100%', maxWidth: 360, gap: 12 },
+  qrFrame: {
+    backgroundColor: '#FFFFFF',
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 16,
+  },
+  watermark: {
+    marginTop: 4,
+  },
+  watermarkText: {
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 0.3,
+  },
+
+  // Toggle card
+  toggleCard: {
+    width: 320,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    padding: 14,
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  toggleLabel: { fontSize: 15, fontWeight: '600', color: colors.text },
+  toggleSub: { fontSize: 12, color: colors.muted, marginTop: 2 },
+
+  // Actions
+  actions: { width: 320, marginTop: 16, gap: 12 },
   action: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 10,
-    backgroundColor: colors.white,
+    backgroundColor: '#FFFFFF',
     height: 52,
     borderRadius: 14,
   },
+  actionDisabled: { opacity: 0.5 },
   actionText: { fontSize: 16, fontWeight: '600', color: colors.text },
-  fallbackTitle: { color: colors.white, fontSize: 18, fontWeight: '700', marginBottom: 12 },
-  fallbackLink: { color: colors.white, textDecorationLine: 'underline', fontSize: 15 },
+
+  // Fallback
+  fallbackTitle: { color: colors.text, fontSize: 18, fontWeight: '700', marginBottom: 12 },
+  fallbackLink: { color: colors.gradientStart, textDecorationLine: 'underline', fontSize: 15 },
 });
