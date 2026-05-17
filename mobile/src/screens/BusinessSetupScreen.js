@@ -40,8 +40,15 @@ export default function BusinessSetupScreen({ navigation, route }) {
   }, []);
 
   async function save() {
-    if (!businessName.trim() || !googleReviewUrl.trim()) {
-      Alert.alert('Required', 'Business name and Google review URL are required.');
+    if (!businessName.trim()) {
+      Alert.alert('Required', 'Please enter your business name.');
+      return;
+    }
+    if (!googleReviewUrl.trim() && !facebookPageUrl.trim()) {
+      Alert.alert(
+        'Add at least one link',
+        'Add either your Google review URL, your Facebook page URL, or both — we need somewhere to send your customers.',
+      );
       return;
     }
     setLoading(true);
@@ -110,6 +117,8 @@ export default function BusinessSetupScreen({ navigation, route }) {
           onChangeText={setBusinessName}
         />
 
+        <Text style={styles.hint}>Add at least one of the following:</Text>
+
         <Text style={styles.label}>Google Review URL</Text>
         <TextInput
           style={styles.input}
@@ -123,7 +132,7 @@ export default function BusinessSetupScreen({ navigation, route }) {
           Find this in your Google Business dashboard under "Get more reviews".
         </Text>
 
-        <Text style={styles.label}>Facebook Page URL (optional)</Text>
+        <Text style={styles.label}>Facebook Page URL</Text>
         <TextInput
           style={styles.input}
           placeholder="https://facebook.com/yourpage"
@@ -154,6 +163,15 @@ const styles = StyleSheet.create({
   brandRow: { marginBottom: 20 },
   header: { fontSize: 24, fontWeight: '800', color: colors.text, letterSpacing: -0.4 },
   lede: { fontSize: 14, color: colors.muted, marginTop: 4, marginBottom: 24, lineHeight: 20 },
+  hint: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: colors.muted,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginTop: 8,
+    marginBottom: 12,
+  },
   label: { fontSize: 14, fontWeight: '600', color: colors.text, marginBottom: 6 },
   input: {
     backgroundColor: colors.bg,

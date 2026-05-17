@@ -20,7 +20,9 @@ const Tab = createBottomTabNavigator();
 
 function MainTabs() {
   const insets = useSafeAreaInsets();
-  const bottomInset = Math.max(insets.bottom, 8);
+  // Always reserve a minimum visual buffer so icons aren't cramped on phones
+  // with opaque 3-button nav bars (which report tiny bottom insets).
+  const bottomBuffer = Math.max(insets.bottom, 0) + 12;
 
   return (
     <Tab.Navigator
@@ -33,9 +35,9 @@ function MainTabs() {
           backgroundColor: colors.white,
           borderTopColor: colors.border,
           borderTopWidth: 1,
-          height: 56 + bottomInset,
+          height: 56 + bottomBuffer,
           paddingTop: 8,
-          paddingBottom: bottomInset,
+          paddingBottom: bottomBuffer,
         },
         tabBarIcon: ({ color, size }) => {
           const icons = {
