@@ -1,0 +1,259 @@
+PLAY STORE LISTING — ReviewTap
+================================================================
+
+Copy-paste each section into the corresponding field in Google Play
+Console → Main store listing.
+
+================================================================
+APP NAME (max 30 characters)
+================================================================
+
+ReviewTap — Get More Reviews
+
+(Character count: 27)
+
+
+================================================================
+SHORT DESCRIPTION (max 80 characters)
+================================================================
+
+Turn every customer into a 5-star Google review with one tap of a QR code.
+
+(Character count: 73)
+
+
+================================================================
+FULL DESCRIPTION (max 4000 characters)
+================================================================
+
+Stop asking customers for reviews. Start collecting them.
+
+ReviewTap creates a custom QR code for your business that takes
+customers straight to your Google or Facebook review page in one tap.
+No app downloads. No accounts. No friction.
+
+Print it on your receipt, stick it on your counter, or share it digitally.
+Every scan is one step closer to a 5-star review.
+
+
+WHY REVIEWTAP?
+
+★ One-tap reviews — customers go from scan to "Write a review" in
+  seconds, not minutes
+★ Works on every phone — uses the native camera app, no extra
+  download needed
+★ Built for small businesses — designed for cafes, salons, mechanics,
+  retail shops, and service providers
+★ Track what works — see how many people scan your code and click
+  through to leave a review
+★ Free to use — no subscription, no hidden fees
+
+
+HOW IT WORKS
+
+1. Sign up in 30 seconds with your email or Google account
+2. Add your business name and paste your Google review link
+3. Get your custom QR code — share digitally or print it
+4. Watch the reviews start coming in
+
+That's it. No setup wizards, no integration headaches, no learning curve.
+
+
+PERFECT FOR
+
+→ Restaurants and cafes
+→ Hair salons and barbershops
+→ Auto repair shops
+→ Retail stores
+→ Cleaning services
+→ Fitness studios
+→ Any business that depends on word-of-mouth
+
+
+WHAT YOU GET
+
+• Personal QR code linked to your business
+• Branded landing page customers see when they scan
+• Download QR as image for printing on receipts, business cards,
+  table tents, or signage
+• Share QR digitally via text, email, or social media
+• Real-time analytics — total scans and review link clicks
+• Edit your business info anytime
+• Secure cloud storage (powered by Google Firebase)
+
+
+PRIVACY & SECURITY
+
+ReviewTap collects only what's needed to deliver the service:
+your email, business info, and anonymized scan analytics. We never
+collect data from your customers when they scan your code. We never
+sell your data. Read our full privacy policy at:
+https://reviewtap-259289.web.app/privacy
+
+
+SUPPORT
+
+Need help? Email rivenwebdesign.aiautomation@gmail.com — we usually
+reply within 24 hours.
+
+
+Built with care by Riven.
+
+(Character count: ~2030 / 4000)
+
+
+================================================================
+CATEGORY
+================================================================
+
+Primary: Business
+Tags: Small Business, Marketing, QR Code, Reviews, Customer Engagement
+
+
+================================================================
+CONTENT RATING
+================================================================
+
+When prompted by Play Console's content rating questionnaire,
+answer everything "No / None of these apply" — ReviewTap is a
+plain business tool with no user-generated content, no chat,
+no gambling, no violence, no anything sensitive.
+
+Expected rating: Everyone
+
+
+================================================================
+TARGET AUDIENCE
+================================================================
+
+Primary age group: 18+ (small business owners)
+
+
+================================================================
+DATA SAFETY (for the Data Safety form)
+================================================================
+
+Does your app collect or share any user data?
+   YES
+
+DATA COLLECTED:
+
+1. Personal info
+   - Email address: COLLECTED, used for app functionality (auth),
+     not shared, required, encrypted in transit
+   - Name: COLLECTED (if signed in with Google), used for app
+     functionality, not shared, optional, encrypted in transit
+
+2. App activity
+   - In-app actions (QR scans, link clicks): COLLECTED, used for
+     analytics, not shared, optional, encrypted in transit
+
+3. App info and performance
+   - Crash logs: COLLECTED (if Sentry enabled), used for app
+     functionality, not shared, optional, encrypted in transit
+
+SECURITY PRACTICES:
+   - Data is encrypted in transit (HTTPS/TLS)
+   - You can request data deletion via email
+   - Data follows Families Policy: No (we're not targeting children)
+
+
+================================================================
+SCREENSHOTS (you'll need to produce these — 2 minimum, 8 max)
+================================================================
+
+Required dimensions: 1080 × 1920 (portrait) or 1920 × 1080 (landscape)
+
+Recommended screenshots and captions:
+
+1. Splash → Login screen
+   Caption: "Sign in in seconds with email or Google"
+
+2. Dashboard
+   Caption: "See exactly how many people are reviewing your business"
+
+3. QR Code screen
+   Caption: "Your custom QR — download, print, or share anywhere"
+
+4. Customer landing page (use phone screenshot of a scan result)
+   Caption: "One tap, and your customer is leaving a review"
+
+5. Business setup screen
+   Caption: "Set up in under a minute"
+
+To capture screenshots:
+   - On your test device, open the app
+   - Take screenshots (Power + Volume Down on most Androids)
+   - Transfer to PC
+   - Optionally use a tool like https://screenshots.pro or
+     https://previewed.app to add device frames + marketing text
+
+
+================================================================
+FEATURE GRAPHIC (1024 × 500)
+================================================================
+
+This is the banner shown at the top of your Play Store listing.
+
+Suggested design:
+   - Background: Brand gradient (#4F6DFF → #9B30FF)
+   - Left side: RT. logo, large and bold
+   - Right side (white text): "Turn customers into reviews"
+   - Subtext: "QR codes for small business"
+
+Tools to create:
+   - Canva (free): https://www.canva.com — search "Play Store feature graphic"
+   - Figma (free): use a 1024×500 frame
+
+
+================================================================
+APP ICON
+================================================================
+
+Use the existing RIVEN.png from your project folder. Play Console
+requires 512 × 512 PNG with no transparency. If your RIVEN.png is
+smaller, resize it using:
+   - macOS Preview
+   - Windows Paint
+   - https://www.simpleimageresizer.com (free, browser-based)
+
+
+================================================================
+PRIVACY POLICY URL
+================================================================
+
+Required field. Upload the privacy policy from LEGAL/privacy-policy.txt
+to a public web page first. Easiest option: deploy it as a route on
+your Firebase Hosting site at:
+
+https://reviewtap-259289.web.app/privacy
+
+(Just save the privacy policy text as an HTML file and deploy it
+alongside the landing page.)
+
+
+================================================================
+CONTACT INFORMATION (REQUIRED)
+================================================================
+
+Email: rivenwebdesign.aiautomation@gmail.com
+Website: https://reviewtap-259289.web.app (or your custom domain)
+Phone: (optional)
+
+
+================================================================
+APP ACCESS (REQUIRED)
+================================================================
+
+When Play Console asks "Is your app's content behind a login?" → YES
+Provide a test account:
+   - Email: [create a separate test account in Firebase]
+   - Password: [test password]
+
+Without this, Google's reviewers can't test your app and will reject
+the submission.
+
+
+================================================================
+END OF LISTING
+================================================================

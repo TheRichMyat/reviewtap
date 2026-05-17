@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download ReviewTap Beta</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" />
+  <style>
+    :root {
+      --grad-start: #4F6DFF;
+      --grad-end: #9B30FF;
+      --text: #1A1A1A;
+      --muted: #6B7280;
+      --bg: #F5F5F7;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      padding: 56px 24px 64px;
+      text-align: center;
+      color: #fff;
+    }
+    .wordmark {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.5px;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.2);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 16px 0 8px;
+      letter-spacing: -0.6px;
+    }
+    .tagline {
+      font-size: 16px;
+      opacity: 0.92;
+      margin: 0;
+    }
+    .container {
+      max-width: 520px;
+      margin: -32px auto 40px;
+      padding: 0 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 8px 32px rgba(79, 109, 255, 0.12);
+    }
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 56px;
+      background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.05s ease, box-shadow 0.15s ease;
+      box-shadow: 0 4px 16px rgba(79, 109, 255, 0.35);
+    }
+    .download-btn:active {
+      transform: scale(0.98);
+    }
+    .download-btn:hover {
+      box-shadow: 0 6px 20px rgba(79, 109, 255, 0.45);
+    }
+    .filesize {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .section {
+      margin-top: 28px;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 12px;
+    }
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: step;
+    }
+    .steps li {
+      counter-increment: step;
+      padding: 12px 0 12px 40px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.5;
+      border-bottom: 1px solid #F0F0F2;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .warning {
+      background: #FFF8E5;
+      border-left: 3px solid #F5A623;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #6B5300;
+      line-height: 1.5;
+      margin-top: 16px;
+    }
+    .meta {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .meta a { color: var(--grad-start); text-decoration: none; }
+    .meta a:hover { text-decoration: underline; }
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer .brand {
+      color: var(--grad-start);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="wordmark">RT.</div>
+    <span class="badge">Beta · Android</span>
+    <h1>Download ReviewTap</h1>
+    <p class="tagline">Turn customers into 5-star reviews.</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <a href="/downloads/ReviewTap_Beta.apk" class="download-btn" download="ReviewTap_Beta.apk">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download ReviewTap_Beta.apk
+      </a>
+      <p class="filesize">Android · Beta v1.0 · ~50 MB</p>
+
+      <div class="section">
+        <p class="section-title">How to install</p>
+        <ol class="steps">
+          <li>Tap the download button above. The APK file will start downloading.</li>
+          <li>Open the downloaded file (find it in your Notifications or in your Downloads folder).</li>
+          <li>If Android warns you about "unknown sources," tap <strong>Settings</strong> → toggle <strong>Allow from this source</strong>.</li>
+          <li>Tap <strong>Install</strong>. The app appears on your home screen as <strong>ReviewTap</strong>.</li>
+          <li>Open the app, sign in, and try generating a QR code for your business.</li>
+        </ol>
+
+        <div class="warning">
+          <strong>⚠️ Play Protect warning is normal.</strong> Beta apps haven't been scanned by Google yet. Tap <strong>"Install anyway"</strong> or <strong>"Don't scan app"</strong> — your data is safe.
+        </div>
+      </div>
+
+      <div class="section">
+        <p class="section-title">Feedback & bugs</p>
+        <p style="margin: 0; font-size: 14px; line-height: 1.5;">
+          Found something weird? Got an idea? Email
+          <a href="mailto:rivenwebdesign.aiautomation@gmail.com" style="color: var(--grad-start); font-weight: 600;">
+            rivenwebdesign.aiautomation@gmail.com
+          </a>
+          — every bit of feedback shapes v1.0.
+        </p>
+      </div>
+    </div>
+
+    <p class="meta">
+      Want to see what the customer flow looks like?
+      <a href="/">View a sample review page →</a>
+    </p>
+  </div>
+
+  <footer>
+    © 2026 ReviewTap · All rights reserved · Developed by <span class="brand">Riven</span>
+  </footer>
+</body>
+</html>

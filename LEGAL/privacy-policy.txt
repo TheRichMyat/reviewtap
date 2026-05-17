@@ -1,0 +1,174 @@
+PRIVACY POLICY — ReviewTap
+
+Effective date: May 17, 2026
+Last updated: May 17, 2026
+
+----------------------------------------------------------------
+1. WHO WE ARE
+----------------------------------------------------------------
+
+ReviewTap ("we," "us," or "our") is a mobile application that helps small
+business owners generate QR codes linking customers to their Google or
+Facebook review pages. ReviewTap is developed and operated by Riven
+(rivenwebdesign.aiautomation@gmail.com).
+
+This Privacy Policy explains what information we collect when you use
+ReviewTap, how we use it, who we share it with, and what choices you have.
+
+----------------------------------------------------------------
+2. WHAT WE COLLECT
+----------------------------------------------------------------
+
+We collect only the minimum information needed to operate the service.
+
+A. Account information (collected when you sign up):
+   - Email address
+   - Display name (if you sign in with Google)
+   - Profile photo URL (if you sign in with Google)
+   - Date of account creation
+
+B. Business profile information (you provide this):
+   - Business name
+   - Google review URL
+   - Facebook page URL (optional)
+
+C. Analytics information (collected automatically when customers
+   scan your QR code or tap a review button):
+   - Event type (scan, Google click, Facebook click)
+   - Timestamp
+   - Browser user agent (device/browser type)
+   - The associated business ID (so we can show you your stats)
+
+We do NOT collect:
+   - Customer names, emails, or any personal identifiers from
+     people who scan your QR code
+   - Location data
+   - Contacts
+   - Photos or files from your device
+   - Microphone or camera content (beyond your phone's native camera
+     opening your QR codes — which never sends data to us)
+
+----------------------------------------------------------------
+3. HOW WE USE INFORMATION
+----------------------------------------------------------------
+
+We use the information we collect to:
+   - Authenticate you and keep your account secure
+   - Display your business profile and generate your QR code
+   - Show you analytics about scans and link clicks
+   - Respond to customer support requests
+   - Improve the app and fix bugs
+
+We do NOT:
+   - Sell your data
+   - Share your data with advertisers
+   - Use your data for marketing purposes outside of our own product
+
+----------------------------------------------------------------
+4. WHO WE SHARE INFORMATION WITH
+----------------------------------------------------------------
+
+We use the following third-party services to operate ReviewTap:
+
+A. Google Firebase (Authentication, Firestore Database, Hosting)
+   Used for: account management, data storage, hosting the customer
+   landing page. Firebase is operated by Google LLC and is governed
+   by Google's Privacy Policy: https://policies.google.com/privacy
+
+B. Google Sign-In (optional)
+   If you choose to sign in with Google, your name, email address,
+   and profile photo are shared with us from Google.
+
+C. Expo Application Services (development infrastructure only)
+   Used to build the app. Expo does not receive user data once the
+   app is installed on your device.
+
+We do not share your information with any other third parties unless
+required by law (e.g., a court order).
+
+----------------------------------------------------------------
+5. DATA RETENTION
+----------------------------------------------------------------
+
+   - Account and business profile data is kept for as long as your
+     account is active.
+   - Analytics data is kept for 24 months, then automatically deleted.
+   - If you delete your account, all associated data is removed from
+     our active database within 30 days.
+
+----------------------------------------------------------------
+6. YOUR RIGHTS
+----------------------------------------------------------------
+
+You have the right to:
+   - Access the personal data we hold about you
+   - Correct inaccurate information
+   - Delete your account and all associated data
+   - Export your data in a portable format
+   - Withdraw consent at any time (which will deactivate your account)
+
+To exercise any of these rights, email us at:
+rivenwebdesign.aiautomation@gmail.com
+
+We will respond within 30 days.
+
+----------------------------------------------------------------
+7. SECURITY
+----------------------------------------------------------------
+
+Your data is stored on Google's Firebase servers and is protected by
+Google's industry-standard security practices. We use:
+   - Encryption in transit (HTTPS / TLS)
+   - Encryption at rest (Google Cloud encryption)
+   - Firebase Security Rules to ensure only you can access your data
+
+No method of internet transmission or storage is 100% secure. We cannot
+guarantee absolute security but will notify you of any breach affecting
+your data within 72 hours of becoming aware of it.
+
+----------------------------------------------------------------
+8. CHILDREN
+----------------------------------------------------------------
+
+ReviewTap is not intended for children under 13 years of age. We do not
+knowingly collect personal information from anyone under 13. If you
+believe a child has provided us with personal information, please
+contact us so we can delete it.
+
+----------------------------------------------------------------
+9. INTERNATIONAL USERS
+----------------------------------------------------------------
+
+ReviewTap is operated globally. Your data may be stored on servers
+located outside your country. By using ReviewTap, you consent to this
+transfer.
+
+If you are in the European Economic Area (EEA), UK, or California,
+you have additional rights under GDPR or CCPA. To exercise them,
+contact us using the email above.
+
+----------------------------------------------------------------
+10. CHANGES TO THIS POLICY
+----------------------------------------------------------------
+
+We may update this Privacy Policy from time to time. When we make
+material changes, we will:
+   - Update the "Last updated" date at the top
+   - Notify you within the app on next sign-in
+   - Continue to honor the previous policy for data collected before
+     the change, unless you accept the new terms
+
+----------------------------------------------------------------
+11. CONTACT
+----------------------------------------------------------------
+
+If you have questions about this Privacy Policy or how we handle your
+data, please contact:
+
+Riven
+Email: rivenwebdesign.aiautomation@gmail.com
+App: ReviewTap
+
+----------------------------------------------------------------
+END OF PRIVACY POLICY
+----------------------------------------------------------------
