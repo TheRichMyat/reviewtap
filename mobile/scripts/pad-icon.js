@@ -23,26 +23,27 @@ function gradientIconSvg({ width, height, fontSize, textY, rounded }) {
 `;
 }
 
-// Adaptive icon: large safe zone — content lives in inner ~66%
+// Adaptive icon: large safe zone — content lives in inner ~66%.
+// RT. sized smaller so it doesn't feel loud after launcher cropping.
 async function makeAdaptive() {
   const SIZE = 1024;
   const svg = gradientIconSvg({
     width: SIZE, height: SIZE,
-    fontSize: 340,        // smaller so it sits inside the safe zone
-    textY: 620,           // visually centered with descender adjustment
-    rounded: false,       // adaptive icon canvas is square
+    fontSize: 260,        // was 340 — quieter, more breathing room
+    textY: 590,
+    rounded: false,
   });
   await sharp(Buffer.from(svg)).png().toFile(OUT_ADAPTIVE);
   console.log('Wrote', OUT_ADAPTIVE);
 }
 
-// Regular icon (used on iOS / Play Store listing)
+// Regular icon (iOS / Play Store listing) — also toned down.
 async function makeIcon() {
   const SIZE = 1024;
   const svg = gradientIconSvg({
     width: SIZE, height: SIZE,
-    fontSize: 460,
-    textY: 660,
+    fontSize: 340,        // was 460 — better proportions for a recognizable mark
+    textY: 620,
     rounded: false,
   });
   await sharp(Buffer.from(svg)).png().toFile(OUT_ICON);
