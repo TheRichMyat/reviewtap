@@ -4,7 +4,8 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "**/*.apk", "**/*.aab"],
     "rewrites": [
       { "source": "/review/**", "destination": "/index.html" },
-      { "source": "/download", "destination": "/download.html" }
+      { "source": "/download", "destination": "/download.html" },
+      { "source": "/get-review-link", "destination": "/get-review-link.html" }
     ],
     "headers": [
       {

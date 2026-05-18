@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find your Google review link · ReviewTap</title>
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="preconnect" href="https://rsms.me/" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" />
+  <style>
+    :root {
+      --grad-start: #4F6DFF;
+      --grad-end: #9B30FF;
+      --text: #1A1A1A;
+      --muted: #6B7280;
+      --bg: #F5F5F7;
+      --warning-bg: #FFF8E5;
+      --warning-border: #F5A623;
+      --warning-text: #6B5300;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      padding: 48px 24px 56px;
+      text-align: center;
+      color: #fff;
+    }
+    .wordmark {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: 800;
+      margin: 14px 0 8px;
+      letter-spacing: -0.6px;
+    }
+    .tagline {
+      font-size: 15px;
+      opacity: 0.92;
+      margin: 0;
+    }
+    .container {
+      max-width: 560px;
+      margin: -32px auto 40px;
+      padding: 0 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px 22px;
+      box-shadow: 0 8px 32px rgba(79, 109, 255, 0.10);
+      margin-bottom: 16px;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--grad-start);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin: 0 0 6px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      margin: 0 0 4px;
+    }
+    .section-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 18px;
+      line-height: 1.5;
+    }
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: step;
+    }
+    .steps li {
+      counter-increment: step;
+      padding: 12px 0 12px 40px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.55;
+      border-bottom: 1px solid #F0F0F2;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .steps strong { font-weight: 700; }
+    .steps code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      background: var(--bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text);
+    }
+    .done-banner {
+      background: #ECFDF5;
+      border-left: 3px solid #10B981;
+      color: #065F46;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 14px;
+    }
+    .or-divider {
+      display: flex;
+      align-items: center;
+      margin: 28px 0;
+    }
+    .or-divider span {
+      padding: 0 16px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .or-divider::before, .or-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #E5E7EB;
+    }
+    .external-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 18px;
+      background: #fff;
+      color: var(--text);
+      border: 2px solid var(--grad-start);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 4px 0 6px;
+    }
+    .external-btn:hover { background: #F8F9FF; }
+    .input-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 18px 0 6px;
+    }
+    .input {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 14px;
+      background: var(--bg);
+      border: 1.5px solid transparent;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    .input:focus { border-color: var(--grad-start); background: #fff; }
+    .input.has-warning { border-color: var(--warning-border); }
+    .warning {
+      background: var(--warning-bg);
+      border-left: 3px solid var(--warning-border);
+      color: var(--warning-text);
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    .warning[hidden] { display: none; }
+    .result {
+      margin-top: 18px;
+      background: #F8F9FF;
+      border: 1.5px solid #E0E5FF;
+      padding: 14px 16px;
+      border-radius: 10px;
+      word-break: break-all;
+    }
+    .result-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin: 0 0 6px;
+    }
+    .result-url {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .result-url.placeholder { color: var(--muted); }
+    .result-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      height: 44px;
+      padding: 0 14px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.05s ease;
+      border: none;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid #E5E7EB;
+    }
+    .details {
+      margin-top: 14px;
+      font-size: 13px;
+    }
+    .details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--grad-start);
+      padding: 8px 0;
+    }
+    .details .details-body {
+      color: var(--muted);
+      line-height: 1.55;
+      padding: 8px 0 0;
+    }
+    .cta-card {
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      color: #fff;
+      text-align: center;
+      padding: 24px 20px;
+    }
+    .cta-card .section-title { color: #fff; margin-bottom: 12px; }
+    .cta-card .section-sub { color: rgba(255,255,255,0.92); margin-bottom: 18px; }
+    .cta-card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 48px;
+      padding: 0 28px;
+      background: #fff;
+      color: var(--grad-start);
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer .brand { color: var(--grad-start); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="wordmark">RT.</div>
+    <h1>Find your Google review link</h1>
+    <p class="tagline">Pick the path that fits your business. Takes 2 minutes either way.</p>
+  </div>
+
+  <div class="container">
+    <!-- Section A: Claimed Business Profile -->
+    <div class="card">
+      <p class="section-eyebrow">Path A · Recommended if available</p>
+      <h2 class="section-title">Got a verified Google Business Profile?</h2>
+      <p class="section-sub">Use your built-in "Get more reviews" share link — it's the cleanest option.</p>
+
+      <ol class="steps">
+        <li>Go to <strong>business.google.com</strong> and sign in with the Google account that manages your business.</li>
+        <li>Pick your business from the list.</li>
+        <li>Find <strong>"Get more reviews"</strong> on the dashboard (or <strong>"Read reviews"</strong> in the left menu).</li>
+        <li>Click <strong>"Share review form"</strong> → <strong>Copy link</strong>.</li>
+        <li>The link looks like <code>https://g.page/r/CXXXXXXX/review</code> — that's your URL.</li>
+      </ol>
+
+      <div class="done-banner">
+        ✅ Done — skip the next section and paste that link into ReviewTap.
+      </div>
+    </div>
+
+    <div class="or-divider"><span>Or</span></div>
+
+    <!-- Section B: Place ID -->
+    <div class="card">
+      <p class="section-eyebrow">Path B · Works for any business on Google Maps</p>
+      <h2 class="section-title">Use your Place ID</h2>
+      <p class="section-sub">If your business is on Google Maps (even unclaimed), you can build a working review link from its Place ID.</p>
+
+      <ol class="steps">
+        <li>
+          Click the button below — opens Google's free Place ID tool in a new tab.
+          <div>
+            <a class="external-btn" href="https://developers.google.com/maps/documentation/places/web-service/place-id" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open Place ID Finder
+            </a>
+          </div>
+        </li>
+        <li>In the search box on Google's map, type your business name and pick the right pin.</li>
+        <li>Click the pin — a card pops up containing <strong>"Place ID: ChIJxxxxxxxxxx"</strong>.</li>
+        <li>Copy the Place ID (long string starting with <code>Ch...</code>, about 27 characters).</li>
+        <li>Paste it in the box below 👇</li>
+      </ol>
+
+      <p class="input-label">Your Place ID</p>
+      <input
+        id="placeIdInput"
+        class="input"
+        type="text"
+        placeholder="ChIJN1t_tDeuEmsRUsoyG83frY4"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+      <div id="warning" class="warning" hidden>
+        That doesn't look like a Place ID. Make sure you copied the long string starting with <strong>Ch...</strong> or <strong>G...</strong> from Google's tool.
+      </div>
+
+      <div class="result">
+        <p class="result-label">Your Google review link</p>
+        <div id="resultUrl" class="result-url placeholder">Paste a Place ID above to generate your link…</div>
+        <div class="result-actions">
+          <button id="copyBtn" class="btn btn-primary" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy link
+          </button>
+          <button id="testBtn" class="btn btn-secondary" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Test it
+          </button>
+        </div>
+      </div>
+
+      <details class="details">
+        <summary>Can't find your business?</summary>
+        <div class="details-body">
+          If your business isn't on Google Maps yet, you'll need to add it first. Visit <strong>business.google.com</strong> and click <strong>"Add your business."</strong> It's free and takes 5 minutes. Verification (a postcard or video call from Google) can take a few days — once it's listed, come back here.
+        </div>
+      </details>
+    </div>
+
+    <!-- What's next -->
+    <div class="card">
+      <p class="section-eyebrow">Last step</p>
+      <h2 class="section-title">Paste your link into ReviewTap</h2>
+      <ol class="steps">
+        <li>Open <strong>ReviewTap</strong> on your phone.</li>
+        <li>If you're setting up for the first time, paste your link in the <strong>Google Review URL</strong> field. Otherwise: <strong>Settings → Edit Business Info</strong>.</li>
+        <li>Save. Your QR is ready to share.</li>
+      </ol>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="card cta-card">
+      <h2 class="section-title">Don't have ReviewTap yet?</h2>
+      <p class="section-sub">Free Android app · Beta · Get a branded QR for your business in under 2 minutes.</p>
+      <a href="/download" class="cta-card-btn">
+        Get the app
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 ReviewTap · All rights reserved · Developed by <span class="brand">Riven</span>
+  </footer>
+
+  <script>
+    (function () {
+      var input = document.getElementById('placeIdInput');
+      var resultUrl = document.getElementById('resultUrl');
+      var copyBtn = document.getElementById('copyBtn');
+      var testBtn = document.getElementById('testBtn');
+      var warning = document.getElementById('warning');
+      var BASE = 'https://search.google.com/local/writereview?placeid=';
+      var PLACEHOLDER = 'Paste a Place ID above to generate your link…';
+
+      function looksLikePlaceId(raw) {
+        if (!raw) return null; // empty
+        // Place IDs typically start with "Ch" or "G" and are mostly base64-ish chars
+        var trimmed = raw.trim();
+        if (trimmed.length < 20) return false;
+        return /^(Ch|G)[A-Za-z0-9_\-]{15,}$/.test(trimmed);
+      }
+
+      function update() {
+        var raw = input.value.trim();
+        var ok = looksLikePlaceId(raw);
+
+        if (raw === '') {
+          resultUrl.textContent = PLACEHOLDER;
+          resultUrl.classList.add('placeholder');
+          warning.hidden = true;
+          input.classList.remove('has-warning');
+          copyBtn.disabled = true;
+          testBtn.disabled = true;
+          return;
+        }
+
+        var url = BASE + encodeURIComponent(raw);
+        resultUrl.textContent = url;
+        resultUrl.classList.remove('placeholder');
+
+        if (ok === false) {
+          warning.hidden = false;
+          input.classList.add('has-warning');
+        } else {
+          warning.hidden = true;
+          input.classList.remove('has-warning');
+        }
+
+        copyBtn.disabled = false;
+        testBtn.disabled = false;
+      }
+
+      input.addEventListener('input', update);
+      input.addEventListener('paste', function () {
+        setTimeout(update, 0);
+      });
+
+      copyBtn.addEventListener('click', async function () {
+        var raw = input.value.trim();
+        if (!raw) return;
+        var url = BASE + encodeURIComponent(raw);
+        try {
+          await navigator.clipboard.writeText(url);
+          var original = copyBtn.innerHTML;
+          copyBtn.innerHTML =
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+          setTimeout(function () { copyBtn.innerHTML = original; }, 1600);
+        } catch (e) {
+          alert('Could not copy — long-press the URL above and copy it manually.');
+        }
+      });
+
+      testBtn.addEventListener('click', function () {
+        var raw = input.value.trim();
+        if (!raw) return;
+        window.open(BASE + encodeURIComponent(raw), '_blank', 'noopener');
+      });
+    })();
+  </script>
+</body>
+</html>
