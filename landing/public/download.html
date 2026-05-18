@@ -184,7 +184,7 @@
 
   <div class="container">
     <div class="card">
-      <a href="https://github.com/TheRichMyat/reviewtap/releases/latest/download/ReviewTap_Beta.apk" class="download-btn" download="ReviewTap_Beta.apk">
+      <a id="downloadLink" href="https://github.com/TheRichMyat/reviewtap/releases/latest/download/ReviewTap_Beta.apk" class="download-btn" download="ReviewTap_Beta.apk">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -230,5 +230,16 @@
   <footer>
     © 2026 ReviewTap · All rights reserved · Developed by <span class="brand">Riven</span>
   </footer>
+
+  <script>
+    // Cache-buster: append the current timestamp so the download URL is
+    // treated as unique every visit, forcing a fresh fetch through GitHub's CDN.
+    (function () {
+      var link = document.getElementById('downloadLink');
+      if (!link) return;
+      var base = link.getAttribute('href');
+      link.setAttribute('href', base + '?t=' + Date.now());
+    })();
+  </script>
 </body>
 </html>

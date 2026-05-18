@@ -121,13 +121,19 @@ export default function LoginScreen({ navigation }) {
 
           {mode === 'choose' && (
             <View style={styles.actions}>
-              <SecondaryButton
+              <GradientButton
                 title="Sign in with Google"
                 onPress={handleGoogle}
               />
-              <View style={{ height: 12 }} />
+
+              <View style={styles.dividerRow}>
+                <View style={styles.dividerLine} />
+                <Text style={styles.dividerText}>or</Text>
+                <View style={styles.dividerLine} />
+              </View>
+
               <SecondaryButton
-                title="Sign in with Email"
+                title="Continue with email"
                 onPress={() => setMode('email')}
               />
             </View>
@@ -227,5 +233,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     textDecorationLine: 'underline',
+  },
+  dividerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 16,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: 'rgba(255,255,255,0.3)',
+  },
+  dividerText: {
+    color: 'rgba(255,255,255,0.85)',
+    fontSize: 12,
+    fontWeight: '600',
+    marginHorizontal: 12,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
   },
 });
