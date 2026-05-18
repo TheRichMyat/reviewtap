@@ -157,14 +157,9 @@ export default function QRScreen({ navigation }) {
               end={{ x: 1, y: 0 }}
               style={styles.strip}
             >
-              <Text
-                style={[
-                  styles.stripWordmark,
-                  fontsLoaded && { fontFamily: 'ArchivoBlack_400Regular' },
-                ]}
-              >
-                RT.
-              </Text>
+              {fontsLoaded && (
+                <Text style={styles.stripWordmark}>RT.</Text>
+              )}
             </LinearGradient>
 
             <View style={styles.posterBody}>
@@ -253,16 +248,15 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   strip: {
-    height: 60,
-    flexDirection: 'row',
+    height: 64,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     paddingHorizontal: 20,
   },
   stripWordmark: {
+    fontFamily: 'ArchivoBlack_400Regular',
     color: '#FFFFFF',
     fontSize: 24,
-    fontWeight: '900',
     letterSpacing: 0.5,
   },
   posterBody: {
@@ -270,20 +264,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   intro: {
-    fontSize: 13,
+    fontSize: 12,
     color: colors.muted,
-    fontWeight: '600',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    marginBottom: 8,
+    fontWeight: '500',
+    marginBottom: 2,
+    textAlign: 'center',
   },
   bizName: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: '800',
     color: colors.text,
     textAlign: 'center',
     letterSpacing: -0.4,
-    marginBottom: 20,
+    lineHeight: 30,
+    marginBottom: 24,
   },
   qrFrame: {
     backgroundColor: '#FFFFFF',
