@@ -15,8 +15,9 @@ const firebaseConfig = {
   measurementId: 'G-F16HE4SSK4',
 };
 
-// Public URL where the landing page is hosted. Used to build the QR target URL.
-export const LANDING_BASE_URL = 'https://reviewtap-259289.web.app';
+// Public URL where the landing page is hosted (Cloudflare Workers Assets).
+// Used to build the QR target URL — keep in sync with the deployed site.
+export const LANDING_BASE_URL = 'https://reviewtap.rivenwebdesign-aiautomation.workers.dev';
 
 export const app = initializeApp(firebaseConfig);
 export const auth = initializeAuth(app, {
