@@ -1,9 +1,0 @@
-# Cloudflare Pages routing config
-# Format: source destination status (200 = rewrite, keeps URL the same)
-
-# Customer review pages (any /review/{id}) serve the SPA index.html
-/review/* /index.html 200
-
-# Clean URLs for download + helper pages
-/download /download.html 200
-/get-review-link /get-review-link.html 200

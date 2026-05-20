@@ -3,6 +3,7 @@
   "name": "reviewtap",
   "compatibility_date": "2025-09-01",
   "assets": {
-    "directory": "./landing/public"
+    "directory": "./landing/public",
+    "not_found_handling": "single-page-application"
   }
 }
