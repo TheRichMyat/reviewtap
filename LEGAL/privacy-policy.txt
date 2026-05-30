@@ -1,4 +1,4 @@
-PRIVACY POLICY — ReviewTap
+PRIVACY POLICY — Scan & Say
 
 Effective date: May 17, 2026
 Last updated: May 17, 2026
@@ -7,13 +7,13 @@ Last updated: May 17, 2026
 1. WHO WE ARE
 ----------------------------------------------------------------
 
-ReviewTap ("we," "us," or "our") is a mobile application that helps small
+Scan & Say ("we," "us," or "our") is a mobile application that helps small
 business owners generate QR codes linking customers to their Google or
-Facebook review pages. ReviewTap is developed and operated by Riven
+Facebook review pages. Scan & Say is developed and operated by Riven
 (rivenwebdesign.aiautomation@gmail.com).
 
 This Privacy Policy explains what information we collect when you use
-ReviewTap, how we use it, who we share it with, and what choices you have.
+Scan & Say, how we use it, who we share it with, and what choices you have.
 
 ----------------------------------------------------------------
 2. WHAT WE COLLECT
@@ -68,7 +68,7 @@ We do NOT:
 4. WHO WE SHARE INFORMATION WITH
 ----------------------------------------------------------------
 
-We use the following third-party services to operate ReviewTap:
+We use the following third-party services to operate Scan & Say:
 
 A. Google Firebase (Authentication, Firestore Database, Hosting)
    Used for: account management, data storage, hosting the customer
@@ -130,7 +130,7 @@ your data within 72 hours of becoming aware of it.
 8. CHILDREN
 ----------------------------------------------------------------
 
-ReviewTap is not intended for children under 13 years of age. We do not
+Scan & Say is not intended for children under 13 years of age. We do not
 knowingly collect personal information from anyone under 13. If you
 believe a child has provided us with personal information, please
 contact us so we can delete it.
@@ -139,8 +139,8 @@ contact us so we can delete it.
 9. INTERNATIONAL USERS
 ----------------------------------------------------------------
 
-ReviewTap is operated globally. Your data may be stored on servers
-located outside your country. By using ReviewTap, you consent to this
+Scan & Say is operated globally. Your data may be stored on servers
+located outside your country. By using Scan & Say, you consent to this
 transfer.
 
 If you are in the European Economic Area (EEA), UK, or California,
@@ -167,7 +167,7 @@ data, please contact:
 
 Riven
 Email: rivenwebdesign.aiautomation@gmail.com
-App: ReviewTap
+App: Scan & Say
 
 ----------------------------------------------------------------
 END OF PRIVACY POLICY

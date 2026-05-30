@@ -1,6 +1,6 @@
 export const colors = {
-  gradientStart: '#4F6DFF',
-  gradientEnd: '#9B30FF',
+  gradientStart: '#FB923C',  // warm orange
+  gradientEnd: '#F43F5E',    // coral / rose
   text: '#1A1A1A',
   muted: '#6B7280',
   white: '#FFFFFF',

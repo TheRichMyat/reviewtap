@@ -116,8 +116,8 @@ export default function LoginScreen({ navigation }) {
         >
           <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
           <Image source={require('../../assets/logo.png')} style={styles.logo} />
-          <Text style={styles.title}>Welcome to ReviewTap</Text>
-          <Text style={styles.subtitle}>Turn customers into reviews.</Text>
+          <Text style={styles.title}>Welcome to Scan & Say</Text>
+          <Text style={styles.subtitle}>Every great visit deserves a good word.</Text>
 
           {mode === 'choose' && (
             <View style={styles.actions}>

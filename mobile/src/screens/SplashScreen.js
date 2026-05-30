@@ -31,14 +31,16 @@ export default function SplashScreen({ navigation }) {
     <LinearGradient colors={gradient} style={styles.container}>
       <StatusBar style="light" translucent backgroundColor="transparent" />
       <Image source={require('../../assets/logo.png')} style={styles.logo} />
-      <Text
-        style={[
-          styles.wordmark,
-          fontsLoaded && { fontFamily: 'ArchivoBlack_400Regular' },
-        ]}
-      >
-        ReviewTap
-      </Text>
+      {fontsLoaded && (
+        <Text
+          style={[
+            styles.wordmark,
+            { fontFamily: 'ArchivoBlack_400Regular' },
+          ]}
+        >
+          Scan & Say
+        </Text>
+      )}
     </LinearGradient>
   );
 }

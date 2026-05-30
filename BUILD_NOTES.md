@@ -1,7 +1,7 @@
-# Building ReviewTap — A Step-by-Step Build Journal
+# Building Scan & Say — A Step-by-Step Build Journal
 
 > **Purpose of this document**
-> This is a from-scratch playbook for shipping a mobile app like ReviewTap. It's written so you (or future you) can repeat this build faster next time, and avoid the gotchas the first time around.
+> This is a from-scratch playbook for shipping a mobile app like Scan & Say. It's written so you (or future you) can repeat this build faster next time, and avoid the gotchas the first time around.
 >
 > Each section has three things:
 > - **The steps** — exactly what to click/type
@@ -557,7 +557,7 @@ Interactive prompts:
 1. Platform → Android
 2. Build profile → production
 3. Keystore → Set up a new keystore
-4. Name → "ReviewTap Production" (or any)
+4. Name → "Scan & Say Production" (or any)
 5. Generate new keystore → Yes
 
 After it finishes, **copy the SHA1 fingerprint** from the output. You need it for Google OAuth.
@@ -612,7 +612,7 @@ When done, scan the QR or open the URL on your phone to install.
 2. **APIs & Services → Credentials**
 3. **+ Create credentials → OAuth client ID**
 4. Application type: **Android**
-5. Name: "ReviewTap Android"
+5. Name: "Scan & Say Android"
 6. Package name: `com.yourname.appname` (must match `android.package` in your `app.json`)
 7. SHA-1 fingerprint: paste the one from `eas credentials` output
 8. Create → copy the **Client ID**
@@ -768,4 +768,4 @@ firebase deploy --only firestore:rules
 
 **End of build journal.**
 
-*Last updated: May 17, 2026. Built with ReviewTap as the case study.*
+*Last updated: May 17, 2026. Built with Scan & Say as the case study.*

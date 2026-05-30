@@ -43,3 +43,14 @@ firebase-debug.log
 
 # Build outputs from our script
 landing/public/downloads/*.apk
+
+# Design source files (Photoshop, sketches, concept exports)
+Rebrand */
+*.psd
+*.ai
+*.sketch
+*.fig
+*.lnk
+
+# Windows shortcuts
+*.lnk

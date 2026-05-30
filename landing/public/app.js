@@ -40,7 +40,7 @@ async function logEvent(businessId, eventType) {
 
 async function main() {
   const businessId = getBusinessId();
-  console.log("[ReviewTap] businessId from URL:", businessId);
+  console.log("[Scan & Say] businessId from URL:", businessId);
   if (!businessId) {
     loading.hidden = true;
     notfound.hidden = false;
@@ -51,12 +51,12 @@ async function main() {
   try {
     snap = await getDoc(doc(db, "businesses", businessId));
   } catch (err) {
-    console.error("[ReviewTap] Firestore read failed:", err);
+    console.error("[Scan & Say] Firestore read failed:", err);
     loading.textContent = `Error: ${err.code || err.message}`;
     return;
   }
 
-  console.log("[ReviewTap] doc exists:", snap.exists(), "data:", snap.data());
+  console.log("[Scan & Say] doc exists:", snap.exists(), "data:", snap.data());
   if (!snap.exists()) {
     loading.hidden = true;
     notfound.hidden = false;
@@ -65,7 +65,7 @@ async function main() {
 
   const data = snap.data();
   nameEl.textContent = data.businessName || "this business";
-  document.title = `Review ${data.businessName || "us"} — ReviewTap`;
+  document.title = `Review ${data.businessName || "us"} — Scan & Say`;
 
   if (data.googleReviewUrl) {
     googleBtn.hidden = false;

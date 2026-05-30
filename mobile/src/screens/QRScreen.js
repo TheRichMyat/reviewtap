@@ -75,7 +75,7 @@ export default function QRScreen({ navigation }) {
       if (perm.status !== 'granted' && !perm.canAskAgain) {
         Alert.alert(
           'Permission needed',
-          'Photos access is blocked. Open device Settings → ReviewTap → Photos to enable.',
+          'Photos access is blocked. Open device Settings → Scan & Say → Photos to enable.',
         );
         return;
       }
@@ -158,7 +158,7 @@ export default function QRScreen({ navigation }) {
               style={styles.strip}
             >
               {fontsLoaded && (
-                <Text style={styles.stripWordmark}>RT.</Text>
+                <Text style={styles.stripWordmark}>Ss.</Text>
               )}
             </LinearGradient>
 
@@ -173,7 +173,7 @@ export default function QRScreen({ navigation }) {
               {includeWatermark && fontsLoaded && (
                 <View style={styles.watermark}>
                   <GradientText style={styles.watermarkText}>
-                    Powered by @reviewtap on Play Store
+                    Powered by @scanandsay on Play Store
                   </GradientText>
                 </View>
               )}
@@ -184,7 +184,7 @@ export default function QRScreen({ navigation }) {
         {/* Watermark toggle */}
         <View style={styles.toggleCard}>
           <View style={{ flex: 1 }}>
-            <Text style={styles.toggleLabel}>ReviewTap watermark</Text>
+            <Text style={styles.toggleLabel}>Scan & Say watermark</Text>
             <Text style={styles.toggleSub}>Premium · Free during beta</Text>
           </View>
           <Switch

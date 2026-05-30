@@ -1,11 +1,11 @@
-# ReviewTap
+# Scan & Say
 
 QR codes for small business owners that redirect customers to their Google or Facebook review page. The app doesn't post reviews — it only removes friction by giving customers a clean, branded tap-through page.
 
 ## Project layout
 
 ```
-ReviewTap/
+Scan & Say/
 ├── landing/          # Static HTML/JS landing page (Firebase Hosting)
 │   ├── public/       # index.html, app.js, styles.css, firebase-config.js
 │   ├── firebase.json

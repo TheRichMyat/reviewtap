@@ -1,6 +1,6 @@
-# 👋 Welcome to the ReviewTap Beta
+# 👋 Welcome to the Scan & Say Beta
 
-Thanks for being one of the first people to try **ReviewTap** — a tiny app that turns every customer into a Google review with one QR tap.
+Thanks for being one of the first people to try **Scan & Say** — a tiny app that turns every customer into a Google review with one QR tap.
 
 Total time to install + test: ~5 minutes.
 
@@ -9,9 +9,9 @@ Total time to install + test: ~5 minutes.
 ## How to install (Android only — for now)
 
 1. **Open this link on your phone:**
-   👉 https://reviewtap-259289.web.app/download
+   👉 https://reviewtap.rivenwebdesign-aiautomation.workers.dev/download
 
-2. Tap the big **Download ReviewTap_Beta.apk** button.
+2. Tap the big **Download Scan & Say_Beta.apk** button.
 
 3. When the download finishes, tap the notification (or find the file in your Downloads folder).
 
@@ -19,7 +19,7 @@ Total time to install + test: ~5 minutes.
 
 5. You'll see a **Google Play Protect** warning saying it hasn't seen this app before. That's normal for beta apps. Tap **"Install anyway"** or **"Don't scan app"**.
 
-6. Open **ReviewTap** from your home screen.
+6. Open **Scan & Say** from your home screen.
 
 ---
 
@@ -31,7 +31,7 @@ Total time to install + test: ~5 minutes.
 2. **Set up your business** — use your real business details if you have one (or make one up, like "Test Cafe" with `https://google.com` as the review URL)
 3. **Get your QR code** — tap the **QR Code** tab → screenshot it or print it
 4. **Try the customer flow** — scan your own QR with another phone (or your laptop camera) → see the branded review page → tap "Review on Google"
-5. **Check the dashboard** — go back to ReviewTap → tap **Dashboard** → you should see your scan + click counts
+5. **Check the dashboard** — go back to Scan & Say → tap **Dashboard** → you should see your scan + click counts
 
 ### What I want to know
 
@@ -84,7 +84,7 @@ I'm not collecting any personal data beyond:
 - Your business info (which you control)
 - Anonymous scan counts (no identifying info about scanners)
 
-Full privacy policy: https://reviewtap-259289.web.app/privacy *(coming soon — for now, ask me)*
+Full privacy policy: https://reviewtap.rivenwebdesign-aiautomation.workers.dev/privacy *(coming soon — for now, ask me)*
 
 You can delete your account anytime by emailing me.
 

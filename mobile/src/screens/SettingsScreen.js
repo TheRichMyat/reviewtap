@@ -44,7 +44,7 @@ export default function SettingsScreen({ navigation }) {
         <Image source={require('../../assets/logo.png')} style={styles.logo} />
         <View style={styles.brandText}>
           {fontsLoaded ? (
-            <GradientText style={styles.appName}>ReviewTap</GradientText>
+            <GradientText style={styles.appName}>Scan & Say</GradientText>
           ) : (
             <ActivityIndicator size="small" />
           )}

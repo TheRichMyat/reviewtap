@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ReviewTap",
+    "name": "Scan & Say",
     "slug": "reviewtap",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#4F6DFF"
+      "backgroundColor": "#FB923C"
     },
     "ios": {
       "supportsTablet": false,
@@ -23,7 +23,7 @@
       "package": "com.reviewtap.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#4F6DFF"
+        "backgroundColor": "#FB923C"
       },
       "permissions": [
         "WRITE_EXTERNAL_STORAGE",
@@ -43,7 +43,7 @@
       [
         "expo-media-library",
         {
-          "photosPermission": "Allow ReviewTap to save your QR code to Photos."
+          "photosPermission": "Allow Scan & Say to save your QR code to Photos."
         }
       ],
       "expo-web-browser",
